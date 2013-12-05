@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:PullListView="http://schemas.android.com/apk/res/com.example.wbd"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    >
+      <!--中间消息内容列表布局 -->
+  <!--  <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:background="#EAEAEA">
+         -->
+     <com.example.wbd.PullListView
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000"
+        android:gravity="center"
+        android:horizontalSpacing="5dp"
+        android:numColumns="2"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dp"
+        PullListView:enableFooter="true"
+        PullListView:enableHeader="true"
+         />
+          <View  
+  		     android:layout_width="fill_parent"
+  		     android:layout_height="1px" 
+  		     android:background="#d8d8d8"
+  		  ></View> 
+     <!--      </FrameLayout> -->
+     <RelativeLayout 
+         android:layout_width="fill_parent"
+  		     android:layout_height="fill_parent" 
+  		     >
+     <EditText
+         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="wokao"
+        android:layout_alignParentBottom="true"
+          />
+     </RelativeLayout>
+</LinearLayout>

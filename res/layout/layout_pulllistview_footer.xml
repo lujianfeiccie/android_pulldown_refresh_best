@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ListView的头部 -->
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+ >
+  <!-- 内容 -->
+  <RelativeLayout
+  android:layout_width="fill_parent"
+  android:layout_height="50dp"
+  android:id="@+id/head_contentLayout"
+  >
+		  <!-- 提示 -->
+		  <TextView
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent"
+		  android:text="加载更多"
+		  android:textColor="@color/black"
+		  android:textSize="20sp"
+		  android:gravity="center"
+		  android:layout_centerInParent="true"
+		  android:id="@+id/footer_tipsTextView"
+		  />
+		    <!-- 进度条 -->
+		  <ProgressBar
+		  android:layout_width="wrap_content"
+		  android:layout_height="fill_parent"
+		  style="?android:attr/progressBarStyleSmall"
+		  android:id="@+id/footer_progressBar"
+		  android:layout_alignParentRight="true"
+		  android:layout_marginRight="10dp"
+		  android:gravity="center_vertical"
+		  android:visibility="gone"
+		  />
+  </RelativeLayout>
+  
+ 
+  
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<resources> 
+    <!-- PullListView -->
+    <declare-styleable name="PullListView">
+        <attr name="enableHeader" format="boolean" />
+        <attr name="enableFooter" format="boolean"/>
+    </declare-styleable>
+</resources>
+
