@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		
 		listview.setonRefreshListener(MainActivity.this);
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 10; i++) {
 			ImgTxtBean b = new ImgTxtBean();
 			b.setResid(R.drawable.ic_launcher);
 			b.setText("item" + (i + 1));
@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements OnRefreshListener {
 	public void onRefresh() {
 		log("onRefresh");
 		//Toast.makeText(MainActivity.this, "top", Toast.LENGTH_SHORT).show();
-		mHandler.postDelayed(taskFinish, 3000);
+		mHandler.postDelayed(taskFinish, 1000);
 	}
 
 	Handler mHandler = new Handler();
@@ -67,13 +67,32 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		public void run() {
 			// TODO Auto-generated method stub
 			listview.onRefreshComplete();
-			Toast.makeText(MainActivity.this, "新增了N条记录",200).show();
+			Toast.makeText(MainActivity.this, "新增了5条记录",200).show();
+			
+
+			int startIndex = adapter.getCount();
+			for (int i = startIndex; i < startIndex + 5; i++) {
+				ImgTxtBean b = new ImgTxtBean();
+				b.setResid(R.drawable.ic_launcher);
+				b.setText("item" + (i + 1));
+				adapter.addObject(b);
+			}
 		}
 	};
 	@Override
 	public void onMore() {
 		log("onMore");
-		mHandler.postDelayed(taskFinish, 3000);
+		mHandler.postDelayed(taskFinish, 1000);
+	}
+
+	@Override
+	public void onDown() {
+		//log("downing");
+	}
+
+	@Override
+	public void onUp() {
+		//log("uping");
 	}
 	void log(String msg){
 		Log.d(tag, msg);

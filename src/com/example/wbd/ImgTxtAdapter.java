@@ -48,7 +48,6 @@ public class ImgTxtAdapter extends BaseAdapter {
 	
 	public void addObject(ImgTxtBean b){
 		list.add(b);
-		
 		notifyDataSetChanged();
 	}
 
