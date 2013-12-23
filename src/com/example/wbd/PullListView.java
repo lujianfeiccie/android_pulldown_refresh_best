@@ -218,6 +218,14 @@ public class PullListView extends ListView implements OnScrollListener,android.v
         headView.invalidate();
     }
     
+    public void showHeaderViewForUpdating(){
+    	state = REFRESHING;
+    	changeHeaderViewByState();
+    }
+    public void showFooterViewForUpdating(){
+    	state = REFRESHING;
+    	changeFooterViewByState();
+    }
     public void setFooterViews(View footerView)
     {
     	mFooterClass.fProgressBar = (ProgressBar)footerView.findViewById(R.id.footer_progressBar);

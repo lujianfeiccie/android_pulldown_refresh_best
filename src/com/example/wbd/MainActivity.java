@@ -44,13 +44,19 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		
 		listview.setonRefreshListener(MainActivity.this);
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			ImgTxtBean b = new ImgTxtBean();
 			b.setResid(R.drawable.ic_launcher);
 			b.setText("item" + (i + 1));
 			adapter.addObject(b);
 		}
+		//手动更新
+		/*listview.showHeaderViewForUpdating()
+		mHandler.postDelayed(taskFinish, 1000);
 		
+		listview.showFooterViewForUpdating();
+		mHandler.postDelayed(taskFinish, 1000);
+		*/
 	}
 
 	@Override
