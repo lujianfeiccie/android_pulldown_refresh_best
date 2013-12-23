@@ -179,11 +179,11 @@ public class PullListView extends ListView implements OnScrollListener,android.v
         isRefreshable = false; //默认不启动刷新
     }
     //要在setAdapter之前调用
-    private void showHeader(){
+    public void showHeader(){
     	addHeaderView(mHeaderClass.headView);
     }
     //要在setAdapter之前调用
-    private void showFooter(){
+    public void showFooter(){
       addFooterView(mFooterClass.footerView);
       //加入正在刷新
 	  mFooterClass.footerView.setPadding(0, 0, 0, 0);
