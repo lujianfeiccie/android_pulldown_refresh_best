@@ -76,6 +76,9 @@ public class PullListView extends ListView implements OnScrollListener,android.v
     
     public boolean headerfooter = false; // false means head, true means footer	
     
+    boolean hasAddHeader = false;
+    boolean hasAddFooter = false;
+    
     class HeaderClass{
     	public ImageView arrowImageView; //箭头
     	public TextView tipsTextview;//头视图文本框
@@ -180,17 +183,22 @@ public class PullListView extends ListView implements OnScrollListener,android.v
     }
     //要在setAdapter之前调用
     public void showHeader(){
+    	if(hasAddHeader){
     	addHeaderView(mHeaderClass.headView);
+    		hasAddHeader = true;
+    	}
     }
     //要在setAdapter之前调用
     public void showFooter(){
-      addFooterView(mFooterClass.footerView);
-      //加入正在刷新
-	  mFooterClass.footerView.setPadding(0, 0, 0, 0);
-      mFooterClass.fProgressBar.setVisibility(View.INVISIBLE);
-      mFooterClass.fTipsTextview.setText(tips2);
+	    if(!hasAddFooter){
+	      addFooterView(mFooterClass.footerView);
+	      //加入正在刷新
+		  mFooterClass.footerView.setPadding(0, 0, 0, 0);
+	      mFooterClass.fProgressBar.setVisibility(View.INVISIBLE);
+	      mFooterClass.fTipsTextview.setText(tips2);
+	      	hasAddFooter = true; 
+	    }
     }
-    
     private void hideHeader(){
     	removeHeaderView(mHeaderClass.headView);
     }
