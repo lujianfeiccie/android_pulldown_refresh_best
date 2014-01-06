@@ -13,6 +13,7 @@
   android:layout_width="fill_parent"
   android:layout_height="50dp"
   android:id="@+id/head_contentLayout"
+  android:gravity="center_vertical"
   >
 		  <!-- 提示 -->
 		  <TextView

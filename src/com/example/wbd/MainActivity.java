@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements OnRefreshListener {
 			b.setText("item" + (i + 1));
 			adapter.addObject(b);
 		}
-		//æ‰‹åŠ¨æ›´æ–°
+		//ÊÖ¶¯¸üĞÂ
 		/*listview.showHeaderViewForUpdating()
 		mHandler.postDelayed(taskFinish, 1000);
 		
@@ -73,7 +73,7 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		public void run() {
 			// TODO Auto-generated method stub
 			listview.onRefreshComplete();
-			Toast.makeText(MainActivity.this, "æ–°å¢äº†5æ¡è®°å½•",200).show();
+			Toast.makeText(MainActivity.this, "ĞÂÔöÁË5Ìõ¼ÇÂ¼",200).show();
 			
 
 			int startIndex = adapter.getCount();
