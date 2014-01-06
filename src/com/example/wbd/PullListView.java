@@ -183,7 +183,7 @@ public class PullListView extends ListView implements OnScrollListener,android.v
     }
     //要在setAdapter之前调用
     public void showHeader(){
-    	if(hasAddHeader){
+    	if(!hasAddHeader){
     	addHeaderView(mHeaderClass.headView);
     		hasAddHeader = true;
     	}
