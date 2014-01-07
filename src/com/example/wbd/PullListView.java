@@ -4,6 +4,7 @@ import java.util.Date;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -266,15 +267,26 @@ public class PullListView extends ListView implements OnScrollListener,android.v
 		footerView.invalidate();
 	}
 
-	public void onScroll(AbsListView arg0, int firstVisiableItem, int arg2, int arg3) {
-		firstItemIndex = firstVisiableItem;
+	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+		firstItemIndex = firstVisibleItem;
 
 		if (firstItemIndex == 0) {
 			log("onScroll======isfirstIdex = true");
 			isfirstIdex = true;
 			isLastIndex = false;
 		}
+		 if(visibleItemCount+firstVisibleItem==totalItemCount){
+			 log("onScroll======To the bottom state="+state);
+             if(state==DONE){
+            	 state = REFRESHING;
+            	 changeFooterViewByState();            	 
+            	 if(refreshListener!=null){
+            		 refreshListener.onMore();
+            	 }
+             }
+          }
 	}
+	
 
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		if (firstItemIndex > 0) {

@@ -28,6 +28,7 @@ public class MainActivity extends Activity implements OnRefreshListener {
 
 	PullListView listview;
 
+	RequestType requestType = RequestType.Refresh;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,12 +58,14 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		listview.showFooterViewForUpdating();
 		mHandler.postDelayed(taskFinish, 1000);
 		*/
+		listview.onRefreshComplete();
 	}
 
 	@Override
 	public void onRefresh() {
 		log("onRefresh");
 		//Toast.makeText(MainActivity.this, "top", Toast.LENGTH_SHORT).show();
+		requestType = RequestType.Refresh;
 		mHandler.postDelayed(taskFinish, 1000);
 	}
 
@@ -71,23 +74,40 @@ public class MainActivity extends Activity implements OnRefreshListener {
 	Runnable taskFinish = new Runnable(){
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
 			listview.onRefreshComplete();
-			Toast.makeText(MainActivity.this, "新增了5条记录",200).show();
 			
-
-			int startIndex = adapter.getCount();
-			for (int i = startIndex; i < startIndex + 5; i++) {
-				ImgTxtBean b = new ImgTxtBean();
-				b.setResid(R.drawable.ic_launcher);
-				b.setText("item" + (i + 1));
-				adapter.addObject(b);
+			switch(requestType){
+			case More:{
+				int startIndex = adapter.getCount();
+				for (int i = startIndex; i < startIndex + 5; i++) {
+					ImgTxtBean b = new ImgTxtBean();
+					b.setResid(R.drawable.ic_launcher);
+					b.setText("item" + (i + 1));
+					adapter.addObject(b);
+				}
 			}
+				break;
+			case Refresh:
+				{
+					Toast.makeText(MainActivity.this, "刷新了1条记录",200).show();
+					int startIndex = adapter.getCount();
+					for (int i = startIndex; i < startIndex + 1; i++) {
+						ImgTxtBean b = new ImgTxtBean();
+						b.setResid(R.drawable.ic_launcher);
+						b.setText("item" + (i + 1));
+						adapter.addObject(b);
+					}
+				}
+				
+				break;
+			}
+			
 		}
 	};
 	@Override
 	public void onMore() {
 		log("onMore");
+		requestType = RequestType.More;
 		mHandler.postDelayed(taskFinish, 1000);
 	}
 
@@ -102,5 +122,9 @@ public class MainActivity extends Activity implements OnRefreshListener {
 	}
 	void log(String msg){
 		Log.d(tag, msg);
+	}
+	enum RequestType{
+		Refresh,
+		More
 	}
 }
