@@ -40,7 +40,8 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		listview = (PullListView) findViewById(R.id.gridview);
 
 		adapter = new ImgTxtAdapter(context);
-
+		listview.showHeader();
+		listview.showFooter();
 		listview.setAdapter(adapter);
 		
 		listview.setonRefreshListener(MainActivity.this);
@@ -58,7 +59,7 @@ public class MainActivity extends Activity implements OnRefreshListener {
 		listview.showFooterViewForUpdating();
 		mHandler.postDelayed(taskFinish, 1000);
 		*/
-		listview.onRefreshComplete();
+		//listview.onRefreshComplete();
 	}
 
 	@Override
@@ -89,14 +90,14 @@ public class MainActivity extends Activity implements OnRefreshListener {
 				break;
 			case Refresh:
 				{
-					Toast.makeText(MainActivity.this, "刷新了1条记录",200).show();
+					/*Toast.makeText(MainActivity.this, "刷新了1条记录",200).show();
 					int startIndex = adapter.getCount();
 					for (int i = startIndex; i < startIndex + 1; i++) {
 						ImgTxtBean b = new ImgTxtBean();
 						b.setResid(R.drawable.ic_launcher);
 						b.setText("item" + (i + 1));
 						adapter.addObject(b);
-					}
+					}*/
 				}
 				
 				break;
